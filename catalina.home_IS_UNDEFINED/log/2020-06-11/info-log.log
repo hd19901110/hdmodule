@@ -1,0 +1,101 @@
+2020-06-11 09:21:54.925 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590b9d40, dataAddr=0x590ba620 ]
+2020-06-11 09:21:54.929 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590be270, dataAddr=0x590c0680 ]
+2020-06-11 09:21:54.933 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590c3850, dataAddr=0x590c3db0 ]
+2020-06-11 09:21:54.936 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590c93c0, dataAddr=0x590c98b0 ]
+2020-06-11 09:21:54.937 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590cd300, dataAddr=0x590cd5c0 ]
+2020-06-11 09:21:54.938 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590d0d30, dataAddr=0x590d1060 ]
+2020-06-11 09:21:54.940 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590d4690, dataAddr=0x590d4aa0 ]
+2020-06-11 09:21:54.941 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590d7fe0, dataAddr=0x590d8540 ]
+2020-06-11 09:21:54.942 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590dc2b0, dataAddr=0x590dea50 ]
+2020-06-11 09:21:54.943 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590e2700, dataAddr=0x590e3670 ]
+2020-06-11 09:21:54.944 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590e5fb0, dataAddr=0x590e8e40 ]
+2020-06-11 09:21:54.945 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590e6db0, dataAddr=0x590eb750 ]
+2020-06-11 09:21:54.946 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590eed40, dataAddr=0x590efc40 ]
+2020-06-11 09:21:54.947 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590f2f00, dataAddr=0x590f39a0 ]
+2020-06-11 09:21:54.949 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590f8770, dataAddr=0x590f8e90 ]
+2020-06-11 09:21:54.950 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590fc6c0, dataAddr=0x590fdd70 ]
+2020-06-11 09:21:54.951 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x590fd610, dataAddr=0x59100260 ]
+2020-06-11 09:21:54.953 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59103830, dataAddr=0x59104f10 ]
+2020-06-11 09:21:54.954 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59104940, dataAddr=0x59107520 ]
+2020-06-11 09:21:54.956 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x591494a0, dataAddr=0x59109b30 ]
+2020-06-11 09:21:54.957 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5914a3f0, dataAddr=0x5910c140 ]
+2020-06-11 09:21:54.957 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5914e370, dataAddr=0x5910e750 ]
+2020-06-11 09:21:54.958 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5d111120, dataAddr=0x59110d60 ]
+2020-06-11 09:21:54.964 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5d112460, dataAddr=0x59113370 ]
+2020-06-11 09:21:54.965 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5d119740, dataAddr=0x59115980 ]
+2020-06-11 09:24:33.179 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59119d40, dataAddr=0x5911a620 ]
+2020-06-11 09:24:33.183 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5911e270, dataAddr=0x59120680 ]
+2020-06-11 09:24:33.184 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59123850, dataAddr=0x59123db0 ]
+2020-06-11 09:24:33.185 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x591293c0, dataAddr=0x591298b0 ]
+2020-06-11 09:24:33.186 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5912d300, dataAddr=0x5912d5c0 ]
+2020-06-11 09:24:33.187 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59130d30, dataAddr=0x59131060 ]
+2020-06-11 09:24:33.188 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59134690, dataAddr=0x59134aa0 ]
+2020-06-11 09:24:33.189 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59137fe0, dataAddr=0x59138540 ]
+2020-06-11 09:24:33.190 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5913c2b0, dataAddr=0x5913ea50 ]
+2020-06-11 09:24:33.190 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59142700, dataAddr=0x59143670 ]
+2020-06-11 09:24:33.191 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59145fb0, dataAddr=0x59148e40 ]
+2020-06-11 09:24:33.192 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59146db0, dataAddr=0x5914b750 ]
+2020-06-11 09:24:33.193 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5914ed40, dataAddr=0x5914fc40 ]
+2020-06-11 09:24:33.194 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59152f00, dataAddr=0x591539a0 ]
+2020-06-11 09:24:33.196 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59158770, dataAddr=0x59158e90 ]
+2020-06-11 09:24:33.197 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5915c6c0, dataAddr=0x5915dd70 ]
+2020-06-11 09:24:33.198 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5915d610, dataAddr=0x59160260 ]
+2020-06-11 09:24:33.198 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59163830, dataAddr=0x59164f10 ]
+2020-06-11 09:24:33.199 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x59164940, dataAddr=0x59167520 ]
+2020-06-11 09:24:33.200 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x591a94a0, dataAddr=0x59169b30 ]
+2020-06-11 09:24:33.201 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x591aa3f0, dataAddr=0x5916c140 ]
+2020-06-11 09:24:33.202 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x591ae370, dataAddr=0x5916e750 ]
+2020-06-11 09:24:33.203 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5cfd1120, dataAddr=0x59170d60 ]
+2020-06-11 09:24:33.208 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5cfd2460, dataAddr=0x59173370 ]
+2020-06-11 09:24:33.227 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5cfd9740, dataAddr=0x59175980 ]
+2020-06-11 11:03:39.047 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.050 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1887a700, dataAddr=0x1887afe0 ]
+2020-06-11 11:03:39.051 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.052 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1887ec30, dataAddr=0x18881040 ]
+2020-06-11 11:03:39.053 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.054 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x18884210, dataAddr=0x18884770 ]
+2020-06-11 11:03:39.055 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.056 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x18889d80, dataAddr=0x1888a270 ]
+2020-06-11 11:03:39.056 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.057 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1888dcc0, dataAddr=0x1888df80 ]
+2020-06-11 11:03:39.058 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.059 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188916f0, dataAddr=0x18891a20 ]
+2020-06-11 11:03:39.060 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.061 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x18895050, dataAddr=0x18895460 ]
+2020-06-11 11:03:39.062 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.062 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188989a0, dataAddr=0x18898f00 ]
+2020-06-11 11:03:39.063 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.063 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1889cc70, dataAddr=0x1889f410 ]
+2020-06-11 11:03:39.064 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.065 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188a30c0, dataAddr=0x188a4030 ]
+2020-06-11 11:03:39.066 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.066 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188a6970, dataAddr=0x188a9800 ]
+2020-06-11 11:03:39.067 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.068 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188a7770, dataAddr=0x188ac110 ]
+2020-06-11 11:03:39.069 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.069 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188af700, dataAddr=0x188b0600 ]
+2020-06-11 11:03:39.070 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.070 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188b38c0, dataAddr=0x188b4360 ]
+2020-06-11 11:03:39.073 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.073 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188b9130, dataAddr=0x188b9850 ]
+2020-06-11 11:03:39.074 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.074 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188bd080, dataAddr=0x188be730 ]
+2020-06-11 11:03:39.075 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.076 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188bdfd0, dataAddr=0x188c0c20 ]
+2020-06-11 11:03:39.077 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.077 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188c41f0, dataAddr=0x188c58d0 ]
+2020-06-11 11:03:39.078 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.079 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x188c5300, dataAddr=0x188c7ee0 ]
+2020-06-11 11:03:39.080 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.080 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x18909e60, dataAddr=0x188ca4f0 ]
+2020-06-11 11:03:39.081 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.081 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1890adb0, dataAddr=0x188ccb00 ]
+2020-06-11 11:03:39.082 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.083 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1890ed30, dataAddr=0x188cf110 ]
+2020-06-11 11:03:39.084 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.084 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1c7d1120, dataAddr=0x188d1720 ]
+2020-06-11 11:03:39.090 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.091 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1c7d2460, dataAddr=0x188d3d30 ]
+2020-06-11 11:03:39.092 INFO  opencvtest.CardController - 删除图片：D:\image\card1.png
+2020-06-11 11:03:39.092 INFO  opencvtest.CardController - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x1c7de360, dataAddr=0x188d6340 ]
+2020-06-11 11:24:57.926 INFO  com.acts.opencv.base.Cardss - 生成目标图片==============Mat [ 32*294*CV_8UC1, isCont=true, isSubmat=false, nativeObj=0x5bc83ba0, dataAddr=0x5bc84a50 ]

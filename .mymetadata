@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="java_opencv"
+  id="myeclipse.1590551503593"
+  context-root="/java_opencv"
+  j2ee-spec="1.7"
+  archive="java_opencv.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
