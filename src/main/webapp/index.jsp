@@ -166,7 +166,7 @@ desired effect
 			        <!--导入 导出-->
 			        <li class="treeview">
 			          <a href="#base" class="menu1">
-			            <i class="fa fa-list"></i> <span>文件上传下载导入导出</span>
+			            <i class="fa fa-list"></i> <span>文件模块</span>
 			            <span class="pull-right-container">
 			              <i class="fa fa-angle-left pull-right"></i>
 			            </span>
