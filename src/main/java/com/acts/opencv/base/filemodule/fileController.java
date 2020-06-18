@@ -10,32 +10,35 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.acts.opencv.base.entity.User;
+import com.acts.opencv.base.service.UserService;
 import com.acts.opencv.common.utils.YfUtil;
 import com.acts.opencv.common.utils.jeesit.ExcelUtil;
 
 @Controller
 @RequestMapping(value = "files")
 public class fileController {
-	 @Resource
-	    HttpServletRequest request;
-	 
+	
+	HttpServletRequest request;
+	@Autowired
+	UserService userService;
+	
 	    private POIFSFileSystem fs;
 		private HSSFWorkbook wb;
 		private HSSFSheet sheet;
@@ -56,7 +59,29 @@ public class fileController {
     public String RealPath() {
         return request.getSession().getServletContext().getRealPath("/");
     }
-	
+	/**
+	 * 对数据库进行测试
+	 */
+    @RequestMapping("/dataTest")
+	@ResponseBody
+    public String dataTest() {
+		  User user = new User(); 
+		  user.setName("张小明");
+		  user.setSex("男");
+		  user.setAge("18");
+		  user.setStature("65");
+		  user.setWeight("175");
+		  User num= userService.saveAndFlush(user);
+		 
+    	
+    	
+    	return num.toString()+"成功";
+    }
+    
+    
+    
+    
+    
 	/**
 	 * 
 	 * @throws UnsupportedEncodingException 
@@ -65,7 +90,6 @@ public class fileController {
 	@RequestMapping("/fileupload")
 	@ResponseBody
 	public String fileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws UnsupportedEncodingException {
-		System.out.println("111111111111111111111111111111111111111");
 	    //判断文件是否为空
 		if(!file.isEmpty()) {
 			//文件名称
@@ -105,7 +129,8 @@ public class fileController {
 		try {
 			ExcelUtil excel = new ExcelUtil();
 			String oldPath = request.getSession().getServletContext()
-					.getRealPath("/WEB-INF/templet/专业教学成果.xls"); // 文件在项目中的老路径
+					.getRealPath("/template/A4.png"); // 文件在项目中的老路径
+			System.out.println(oldPath);
 			excel.upload(request, response, oldPath);	
 		} catch (Exception e) {
 			return "文件下载失败！失败信息：" + e.getMessage();
@@ -117,7 +142,7 @@ public class fileController {
 	 * excel文件导入
 	 */
 	
-	@RequestMapping(value = "excelExport", method = RequestMethod.POST)
+	@RequestMapping(value = "excelimport", method = RequestMethod.POST)
 	@ResponseBody
 	public String excelExport(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
 		   //判断文件是否为空
@@ -259,5 +284,8 @@ public class fileController {
 		return cellvalue;
 	}	
 	
-
+	
+	
+	
+	
 }

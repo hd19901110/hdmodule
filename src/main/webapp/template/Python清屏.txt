@@ -1,0 +1,16 @@
+import os 
+os.system( 'cls' )
+
+由此也可见,
+想要执行任何一条系统命令,都只需要执行os.system( 'COMMAND' )就行了.
+
+
+
+
+因此，在windows命令提示符下清屏就是：os.system("cls")
+
+
+
+在linux终端下清屏就用：os.system("clear")
+
+public public public static static
