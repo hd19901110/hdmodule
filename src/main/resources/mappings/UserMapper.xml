@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acts.opencv.dao.UserDao">
+    
+	<sql id="testDataColumns">
+		a.id AS "id",
+		a.name AS "name",
+		a.sex AS "sex",
+		a.age AS "stature",
+		a.weight AS "weight"
+	</sql>
+	
+	<sql id="testDataJoins">
+	</sql>
+    
+<!-- 	<select id="get" resultType="TestData">
+		SELECT 
+			<include refid="testDataColumns"/>
+		FROM test_data a
+		<include refid="testDataJoins"/>
+		WHERE a.id = #{id}
+	</select> -->
+
+	<insert id="save">
+		INSERT INTO user(
+		    id,
+			name,
+			sex,
+			age,
+			stature,
+			weight
+		) VALUES (
+		    #{id},
+			#{name},
+			#{sex},
+			#{age},
+			#{stature},
+			#{weight}
+			)
+	</insert>
+</mapper>

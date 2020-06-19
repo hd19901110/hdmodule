@@ -16,12 +16,10 @@
     </p>
   <p>(1.1)使用input</p>
   <div>
-      <input type="file" id="import1" accept="xls,.xlsx"/>
+    <a href="${pageContext.request.contextPath}/template/testimport.xls" download=""  
+   title="导入模板下载" >导入模板下载</a> 
+      <input type="file" id="import1" accept=".xls,.xlsx"/>
   </div>
-
-  
-
-   
      </div>
 
 
@@ -33,29 +31,21 @@
 $("#import1").change(function(){
 	var loading = null;
 	var formData = new FormData();
-	formData.append('file',$(this)[0].files[0]);
+	formData.append('file',$("#import1")[0].files[0]);
 	$.ajax({
 		url: ctxPath+'/files/excelimport',
+		 dataType:'text',
 		type: 'post',
 		async: false,
 		data: formData,
 		// 告诉jQuery不要去处理发送的数据
 		processData: false,
-		headers: {
-			Authorization: 'bearer' + config.getToken().access_token	
-		},
-		beforeSend: function() {
-			loading = layer.msg('导入中');
-		},
-		success: function(res){
-			layer.close(loading);
-			layer.msg('导入成功');
+		contentType : false, 
+		success: function(data){
+			console.log(data)
+		   alert(data)
 			$("#import1").val('');
 		}
-		
-		
-		
-		
 	})
 	
 	
