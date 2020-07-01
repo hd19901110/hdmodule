@@ -262,22 +262,21 @@ public class fileController {
 	public void getExcel(String xn, String xq, String zc, String nj, HttpServletRequest request, HttpServletResponse response) {
 		//https://blog.csdn.net/jinchunzhao123/article/details/82744582
 		
-		
-		if(xn.equals("")||xn==null){
+		if(xn==null||xn.equals("")){
 			xn="2020";
 		}
-		if(xq.equals("")||xq==null){
+		if(xq==null || xq.equals("")){
 			xq="一";
 		}
-		if(zc.equals("")||zc==null){
+		if( zc==null || zc.equals("")){
 			zc="1";
 		}
-		if(nj.equals("")||nj==null){
+		if( nj==null || nj.equals("")){
 			nj="2020";
 		}
 		//里面的数据
-		List<User> userList =new ArrayList<User>();
-	
+		List<User> userList = userService.selectAll();
+	      
 		
 		/* 开始制表 */
 		HSSFWorkbook wb = new HSSFWorkbook();
@@ -342,12 +341,6 @@ public class fileController {
 		HSSFCell cell_28 = row1.createCell(9);
 		cell_28.setCellValue(nj);
 		cell_28.setCellStyle(style2);
-//		HSSFCell cell_29 = row1.createCell(11);
-//		cell_29.setCellValue("班级名称");
-//		cell_29.setCellStyle(style2);
-//		HSSFCell cell_210 = row1.createCell(12);
-//		cell_210.setCellValue(bjmc);
-//		cell_210.setCellStyle(style2);
 		// 第三行
 		HSSFRow row3 = sheet.createRow(2);
 		HSSFCell cell_31 = row3.createCell(0);
@@ -406,8 +399,8 @@ public class fileController {
 		cell_415.setCellValue("缺课人数");
 		cell_415.setCellStyle(style3);
 		
-		/* 合并 */
-        CellRangeAddress region0 = new CellRangeAddress(0, 0, 0, 14);
+		/* 合并 */ //合并单元格
+        CellRangeAddress region0 = new CellRangeAddress(0, 0, 0, 14);//起始行,结束行,起始列,结束列
         sheet.addMergedRegion(region0);
         CellRangeAddress region11 = new CellRangeAddress(1, 1, 1, 2);
         sheet.addMergedRegion(region11);

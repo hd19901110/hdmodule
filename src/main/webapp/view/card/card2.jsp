@@ -19,7 +19,8 @@
 					baseImageFile =  "/statics/sourceimage/card2_"+picno+".jpg";
 				}
 			 	$.SaveForm({
-					url : ctxPath+"/card2/cardMarking?_" + $.now(),
+					//url : ctxPath+"/card2/cardMarking?_" + $.now(),
+					url : ctxPath+"/cardTest/cardMarking?_" + $.now(),
 					param: {"imagefile":baseImageFile},
 					json:true,
 					success : function(result) {

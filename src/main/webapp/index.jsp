@@ -175,7 +175,7 @@ desired effect
 			            <li><a href="#view/filemodule/fileupload.jsp"><i class="fa fa-circle-o"></i>文件上传</a></li>
 			            <li><a href="#view/filemodule/filedownload.jsp"><i class="fa fa-circle-o"></i>文件下载</a></li>
 			            <li><a href="#view/filemodule/fileimport.jsp"><i class="fa fa-circle-o"></i>导入excel</a></li>
-			            <li><a href="#view/base/binary.jsp"><i class="fa fa-circle-o"></i>导出excel</a></li>
+			            <li><a href="#view/filemodule/fileExport.jsp"><i class="fa fa-circle-o"></i>导出excel</a></li>
 			            <li><a href="#view/base/binary.jsp"><i class="fa fa-circle-o"></i>word转pdf</a></li>
 			          </ul>
 			        </li>

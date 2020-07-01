@@ -53,6 +53,8 @@ public class Card2Controller extends BaseController {
 			long t1 = new Date().getTime();
 			//String sourceimage1 = "D:\\test\\abc\\card\\test4.jpg";
 			String sourceimage = Constants.PATH + imagefile;
+			System.out.println("路径........"+sourceimage);
+			
 			//表格检测，获取到表格内容，是查找识别区域的部分，返回的是校正之后的图像  
 			Mat mat = markingArea(sourceimage);
 			String destPath = Constants.PATH + Constants.DEST_IMAGE_PATH + "cardResult_3.png";
@@ -226,7 +228,7 @@ public class Card2Controller extends BaseController {
 			double imgWidth = space1 > space3 ? space1 : space3;
 			double imgHeight = space0 > space2 ? space0 : space2;
 			logger.info("imgWidth:"+imgWidth+"    imgHeight:"+imgHeight);
-			// 如果提取出的图片宽小于高，则旋转90度，因为示例中的矩形框是宽>高的，如果宽小于高应该是图片旋转了
+			// 如果提取出的图片宽小于高，则旋转90度，因为示例中的矩形框是宽>高的，如果宽小于高应该是图片旋转了(这个是定向的)
 			if (imgWidth > imgHeight) {
 				logger.info("----in");
 			    double temp = imgWidth;

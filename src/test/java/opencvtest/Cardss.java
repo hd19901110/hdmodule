@@ -42,7 +42,7 @@ public class Cardss extends BaseController{
 		Mat source = Highgui.imread(sourcePath, Highgui.CV_LOAD_IMAGE_GRAYSCALE);
 		Mat destination = new Mat(source.rows(), source.cols(), source.type());
 		Imgproc.GaussianBlur(source, destination, new Size(2 * ksize + 1, 2 * ksize + 1), 0, 0);
-		String destPath = "D:\\image\\card1.png";
+		String destPath = "D:\\image\\cards1.png";
 		File dstfile = new File(destPath);
 		if (StringUtils.isNotBlank(destPath) && dstfile.isFile() && dstfile.exists()) {
 			dstfile.delete();
@@ -51,13 +51,13 @@ public class Cardss extends BaseController{
 		//renderString(response, "D:\\image\\card1.png");
 		/*----------------高斯模糊结束-----------------------*/
 		/*----------------二值化开始-----------------------*/
-		String sourcePath2 = "D:\\image\\card1.png";
+		String sourcePath2 = "D:\\image\\cards1.png";
 		Integer thresh = 170;
 		// 加载为灰度图显示
 				Mat source2 = Highgui.imread(sourcePath2, Highgui.CV_LOAD_IMAGE_GRAYSCALE);
 				Mat destination2 = new Mat(source2.rows(), source2.cols(), source2.type());
 				Imgproc.threshold(source2, destination2, thresh, 255, Imgproc.THRESH_BINARY_INV);
-				String destPath2 = "D:\\image\\card2.png";
+				String destPath2 = "D:\\image\\cards2.png";
 				File dstfile2 = new File(destPath2);
 				if (StringUtils.isNotBlank(destPath2) && dstfile2.isFile() && dstfile2.exists()) {
 					dstfile2.delete();			
@@ -74,7 +74,7 @@ public class Cardss extends BaseController{
 				Mat element3 = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2 * ksize3 + 1, 2 * ksize3 + 1));
 
 				Imgproc.morphologyEx(source3, destination3, Imgproc.MORPH_OPEN, element3);
-				String destPath3 = "D:\\image\\card3.png";
+				String destPath3 = "D:\\image\\cards3.png";
 				File dstfile3 = new File(destPath3);
 				if (StringUtils.isNotBlank(destPath3) && dstfile3.isFile() && dstfile3.exists()) {
 					dstfile3.delete();
@@ -233,28 +233,31 @@ public class Cardss extends BaseController{
 	
 	
 	public static void main(String[] args) {
-		//CardController car = new CardController();
-		//car.testaa();
+		/*Cardss car = new Cardss();
+		 car.testaa();*/
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		System.out.println(System.getProperty("java.library.path"));
 		  String sourcePath4 = "D:\\image\\card3.png";
+		  sourcePath4 = "D:\\image\\A4.png";
 		  
 		   //加载为灰度图显示
 		   Mat source4 = Highgui.imread(sourcePath4, Highgui.CV_LOAD_IMAGE_GRAYSCALE);
-		  Highgui.imwrite("D:\\test\\abc\\source.png", source4); 
+		   //Highgui.imwrite("D:\\test\\abc\\source.png", source4); 
 		  Mat hierarchy = new Mat();
-		  Mat ch1 = source4.submat(new Rect(170, 52, 294, 32));
+		  Mat ch1 = source4.submat(new Rect(98, 1037, 1012, 236)); 
+		   
 		  Vector<MatOfPoint> contours = new Vector<MatOfPoint>();
           	Mat ch = ch1;
-          /*
-           *findContors 参数 
+          
+                  /*findContors 参数 
                                   *   第一个参数:image,单通道图像矩阵,可以是灰度图,但更常用的是二值图像,一般是经过Canny,拉普拉斯等缘检测算子处理过的二值图像;
                                   * 第二个参数:contours,定义为"vector<vector<Point>>contours",是一个向量,并且是一个双重向量
                                   * 第三个参数：hierarchy，定义为“vector<Vec4i> hierarchy”，先来看一下Vec4i的定义：
-           *        Vec4i是Vec<int,4>的别名，定义了一个“向量内每一个元素包含了4个int型变量”的向量。
-                                 *  第四个参数：int型的mode，定义轮廓的检索模式：
-                                 * 第五个参数：int型的method，定义轮廓的近似方法：
-                                 *第六个参数：Point偏移量，所有的轮廓信息相对于原始图像对应点的偏移量，相当于在每一个检测出的轮廓点上加 上该偏移量，并且Point还可以是负值！ 
-           */
+                                  *        Vec4i是Vec<int,4>的别名，定义了一个“向量内每一个元素包含了4个int型变量”的向量。
+                                  *  第四个参数：int型的mode，定义轮廓的检索模式：
+                                  * 第五个参数：int型的method，定义轮廓的近似方法：
+                                  * 第六个参数：Point偏移量，所有的轮廓信息相对于原始图像对应点的偏移量，相当于在每一个检测出的轮廓点上加 上该偏移量，并且Point还可以是负值！ 
+                 */
 	      Imgproc.findContours(ch, contours, hierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE, new Point());
 			Vector<RectComp> rectCompList = new Vector<RectComp>();
         	for(int i = 0;i<contours.size();i++){
@@ -293,7 +296,6 @@ public class Cardss extends BaseController{
 			}
 			Highgui.imwrite(destPath, result);
 			logger.info("生成目标图片==============" + result);
-			
 			
 		
 	}
