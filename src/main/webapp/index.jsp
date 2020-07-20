@@ -176,10 +176,25 @@ desired effect
 			            <li><a href="#view/filemodule/filedownload.jsp"><i class="fa fa-circle-o"></i>文件下载</a></li>
 			            <li><a href="#view/filemodule/fileimport.jsp"><i class="fa fa-circle-o"></i>导入excel</a></li>
 			            <li><a href="#view/filemodule/fileExport.jsp"><i class="fa fa-circle-o"></i>导出excel</a></li>
-			            <li><a href="#view/base/binary.jsp"><i class="fa fa-circle-o"></i>word转pdf</a></li>
+			            <li><a href="#view/filemodule/wordExcelImgTxtToPdf.jsp"><i class="fa fa-circle-o"></i>office转pdf</a></li>
 			          </ul>
 			        </li>
-			        
+			            <li class="treeview">
+			          <a href="#base" class="menu1">
+			            <i class="fa fa-list"></i> <span>线程模块</span>
+			            <span class="pull-right-container">
+			              <i class="fa fa-angle-left pull-right"></i>
+			            </span>
+			          </a>
+			          <ul class="treeview-menu">
+			            <li><a href="#view/thread/javaThreadOne.jsp"><i class="fa fa-circle-o"></i>java多线程入门</a></li>
+			            <li><a href="#view/thread/javaThreadTwo.jsp"><i class="fa fa-circle-o"></i>synchronized关键字(1)</a></li>
+			            <li><a href="#view/thread/javaThreadThree.jsp"><i class="fa fa-circle-o"></i>synchronized关键字(2)</a></li>
+			            <li><a href="#view/thread/javaThreadFour.jsp"><i class="fa fa-circle-o"></i>volatile关键字</a></li>
+			            <li><a href="#view/thread/javaThreadFive.jsp"><i class="fa fa-circle-o"></i>等待/通知(wait/notify)机制</a></li>
+			            <li><a href="#view/filemodule/wordExcelImgTxtToPdf.jsp"><i class="fa fa-circle-o"></i>office转pdf</a></li>
+			          </ul>
+			        </li>
 			        
 					
 					<li>

@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
@@ -33,6 +35,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.acts.opencv.common.utils.OfficeToPdfTools;
 import com.acts.opencv.common.utils.YfUtil;
 import com.acts.opencv.common.utils.jeesit.ExcelUtil;
 import com.acts.opencv.entity.User;
@@ -493,11 +497,6 @@ public class fileController {
 		}
 	}
 	
-	
-	
-	
-	
-	
 	/**
 	 * 根据HSSFCell类型设置数据
 	 * 
@@ -544,8 +543,47 @@ public class fileController {
 		return cellvalue;
 	}	
 	
-	
-	
+	/**
+	 * office 转PDF
+	 */
+	@RequestMapping("/officeToPdf")
+	@ResponseBody
+	public boolean officeToPdf(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+		String filePath="";
+		 //判断文件是否为空
+		if(!file.isEmpty()) {
+			//文件名称
+			String fileName = file.getOriginalFilename();
+			File dir = new File(RealPath()+"upload/"+YfUtil.YearMonth()+"/"); //1新建一个文件夹对象
+	        if(!dir.exists()) {   //2.检查路径下upload文件夹是否存在,不存在创建路径
+	        	dir.mkdirs();
+	        }
+	           filePath = RealPath() + "upload/" + YfUtil.YearMonth() + "/" + fileName;
+	        try {
+				file.transferTo(new File(filePath));
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	        System.out.println("上传成功,文件路径为:"+filePath); 
+		}else {
+			return false;
+		}
+		   OfficeToPdfTools.convert2PDF(filePath, "D:\\aa1\\"+YfUtil.shddNumber()+".pdf"); 
+		   //删除上传的文件
+		   File dstfile = new File(filePath);
+			if (StringUtils.isNotBlank(filePath) && dstfile.isFile() && dstfile.exists()) {
+				dstfile.delete();
+			}
+		   
+		   
+    return true;		
+				
+				
+				
+				
+	}
 	
 	
 }
