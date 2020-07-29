@@ -192,7 +192,8 @@ desired effect
 			            <li><a href="#view/thread/javaThreadThree.jsp"><i class="fa fa-circle-o"></i>synchronized关键字(2)</a></li>
 			            <li><a href="#view/thread/javaThreadFour.jsp"><i class="fa fa-circle-o"></i>volatile关键字</a></li>
 			            <li><a href="#view/thread/javaThreadFive.jsp"><i class="fa fa-circle-o"></i>等待/通知(wait/notify)机制</a></li>
-			            <li><a href="#view/filemodule/wordExcelImgTxtToPdf.jsp"><i class="fa fa-circle-o"></i>office转pdf</a></li>
+			            <li><a href="#view/thread/javaThreadSix.jsp"><i class="fa fa-circle-o"></i>Thread之管道输入/输出流</a></li>
+			            <li><a href="#view/thread/javaThreadSeven.jsp"><i class="fa fa-circle-o"></i>Lock锁的使用</a></li>
 			          </ul>
 			        </li>
 			        
@@ -210,7 +211,6 @@ desired effect
 		<!-- 路径导航 -->
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
 		    <section class="content-header">
 		      <h1 id = "currentpage">介绍</h1>
 		      <ol class="breadcrumb">
@@ -219,18 +219,11 @@ desired effect
 		        <li class="active"  id = "pagehead3">介绍</li>
 		      </ol>
 		    </section>
-		    
-			<!-- Main content -->
 			<section class="content">
 				<iframe scrolling="yes" frameborder="0"
 					style="width: 100%; min-height: 200px; overflow: visible; background: #fff;"
 					src="main.jsp" id="mainFrame" name="mainFrame"></iframe>
-				<!--------------------------
-        		| Your Page Content Here |
-        		-------------------------->
-
-			</section>
-			<!-- /.content -->
+			</section>		
 		</div>
 		<!-- /.content-wrapper -->
 
