@@ -246,16 +246,387 @@
    在使用wait/notify实现等待通知机制的时候我们知道必须执行完notify()方法所在的synchronized代<br>
    码块后才释放锁.在这里也差不多,必须执行完成signal所在的try语句块之后才释放锁<br>
  conditionv.await()后的语句才能被执行.<br>
- 注意:必须在condition.await()方法调用之前调用lock.lock()代码获得同步监视器,不然会报错. 
- 2.使用多个Condition实例实现等待/通知机制:<br>
- UseMoreConditionWaitNotify.java
+ 注意:必须在condition.await()方法调用之前调用lock.lock()代码获得同步监视器,不然会报错. <br>
  
    </p>
-   
-   
-   
-   
    </div>
+<div>
+<h3> 2.使用多个Condition实例实现等待/通知机制</h3>
+UseMoreConditionWaitNotify.java<br>
+<pre>
+    public class UseMoreConditionWaitNotify {
+         public static void main(String[] args) throws InterruptedException {
+              MyserviceMoreCondition service = new MyserviceMoreCondition();
+              ThreadA a = new ThreadA(service);
+              a.setName("A");
+              a.start();
+              ThreadB b = new ThreadB(service);
+              b.setName("B");
+              b.start();
+              Thread.sleep(3000);
+              service.signalAll_A();
+         }
+         static public class ThreadA extends Thread {
+              private MyserviceMoreCondition service;
+              public ThreadA(MyserviceMoreCondition service) {
+                   super();
+                   this.service = service;
+              }
+
+              @Override
+              public void run() {
+                  service.awaitA();
+              }
+         }
+         static public class ThreadB extends Thread {
+             private MyserviceMoreCondition service;
+             public ThreadB(MyserviceMoreCondition service) {
+                 super();
+                 this.service = service;
+             }
+             @Override
+             public void run() {
+                 service.awaitB();
+             }
+         }
+    }
+</pre>
+MyserviceMoreCondition.java<br>
+<pre>
+    public class MyserviceMoreCondition {
+         private Lock lock = new ReentrantLock();
+         public Condition conditionA = lock.newCondition();
+         public Condition conditionB = lock.newCondition();
+         public void awaitA() {
+             lock.lock();
+             try {
+                   System.out.println("begin awaitA时间为" + System.currentTimeMillis()
+                        + " ThreadName=" + Thread.currentThread().getName());
+                   conditionA.await();
+                   System.out.println("  end awaitA时间为" + System.currentTimeMillis()
+                        + " ThreadName=" + Thread.currentThread().getName());
+                 } catch (InterruptedException e) {
+                   e.printStackTrace();
+                 } finally {
+                   lock.unlock();
+                 }
+          }
+
+          public void awaitB() {
+              lock.lock();
+              try {           
+                    System.out.println("begin awaitB时间为" + System.currentTimeMillis()
+                         + " ThreadName=" + Thread.currentThread().getName());
+                    conditionB.await();
+                    System.out.println("  end awaitB时间为" + System.currentTimeMillis()
+                         + " ThreadName=" + Thread.currentThread().getName());
+                  } catch (InterruptedException e) {
+                    e.printStackTrace();
+                  } finally {
+                    lock.unlock();
+                  }
+          }
+          public void signalAll_A() {
+               lock.lock();
+               try {           
+                     System.out.println("  signalAll_A时间为" + System.currentTimeMillis()
+                         + " ThreadName=" + Thread.currentThread().getName());
+                     conditionA.signalAll();
+                   } finally {
+                     lock.unlock();
+                   }
+          }
+          public void signalAll_B() {
+              lock.lock();
+              try {       
+                    System.out.println("  signalAll_B时间为" + System.currentTimeMillis()
+                         + " ThreadName=" + Thread.currentThread().getName());
+                    conditionB.signalAll();
+                   } finally {
+                    lock.unlock();
+                   }
+          }
+    }
+</pre>
+只有A线程被唤醒了<br>
+</div>
+
+<div>
+    <h3>3.使用Condition实现顺序执行</h3>
+    
+    <p>
+     ConditionSeqExec.java<br>
+     <pre>
+        public class ConditionSeqExec {
+            volatile private static int nextPrintWho = 1;
+            private static ReentrantLock lock = new ReentrantLock();
+            final private static Condition conditionA = lock.newCondition();
+            final private static Condition conditionB = lock.newCondition();
+            final private static Condition conditionC = lock.newCondition();
+            public static void main(String[] args) {
+                Thread threadA = new Thread() {
+                     public void run() {
+                           try {
+                                 lock.lock();
+                                 while (nextPrintWho != 1) {
+                                 conditionA.await();
+                                 }
+                                 for (int i = 0; i < 3; i++) {
+                                    System.out.println("ThreadA " + (i + 1));
+                                 }
+                                 nextPrintWho = 2;
+                                 //通知conditionB实例的线程运行
+                                 conditionB.signalAll();
+                               } catch (InterruptedException e) {
+                                 e.printStackTrace();
+                               } finally {
+                                 lock.unlock();
+                               }
+                     }
+               };
+
+               Thread threadB = new Thread() {
+                    public void run() {
+                       try {
+                              lock.lock();
+                              while (nextPrintWho != 2) {
+                                 conditionB.await();
+                              }
+                              for (int i = 0; i < 3; i++) {
+                                  System.out.println("ThreadB " + (i + 1));
+                              }
+                              nextPrintWho = 3;
+                              //通知conditionC实例的线程运行
+                              conditionC.signalAll();
+                           } catch (InterruptedException e) {
+                             e.printStackTrace();
+                           } finally {
+                             lock.unlock();
+                           }
+                    }
+               };
+
+               Thread threadC = new Thread() {
+                    public void run() {
+                        try {
+                               lock.lock();
+                               while (nextPrintWho != 3) {
+                                    conditionC.await();
+                               }
+                               for (int i = 0; i < 3; i++) {
+                                    System.out.println("ThreadC " + (i + 1));
+                               }
+                               nextPrintWho = 1;
+                               //通知conditionA实例的线程运行
+                               conditionA.signalAll();
+                            } catch (InterruptedException e) {
+                               e.printStackTrace();
+                            } finally {
+                               lock.unlock();
+                            }
+                   }
+               };
+               Thread[] aArray = new Thread[5];
+               Thread[] bArray = new Thread[5];
+               Thread[] cArray = new Thread[5];
+
+               for (int i = 0; i < 5; i++) {
+                  aArray[i] = new Thread(threadA);
+                  bArray[i] = new Thread(threadB);
+                  cArray[i] = new Thread(threadC);
+
+                 aArray[i].start();
+                 bArray[i].start();
+                 cArray[i].start();
+               }
+
+       }
+    } 
+     </pre>
+              通过代码很好理解,说简单就是在一个线程运行完之后通过condition.signal()/condition.signalAll()<br>
+              方法通知下一个特定的运行运行,就这样循环往复即可.<br>
+              注意:默认情况下ReentranLock类使用的是非公平锁
+    </p>
+</div>
+
+<div>
+     <h3>2.4公平锁与非公平锁</h3>
+     <p>
+    Lock锁分为:公平锁和非公平锁.公平锁表示线程获取锁的顺序是按照线程枷锁的顺序来分配的,<br>
+    即先来先得的FIFO先进先出顺序.而非公平锁就是一种获取锁的抢占机制,是随机获取锁的,和公平锁<br>
+    不一样的就是先来的不一定先的到锁.这样可能造成某些线程一直拿不到锁,结果也就是不公平的了.<br>
+    FairorNofairLock.java<br>
+    <pre>
+         public class FairorNofairLock {
+             public static void main(String[] args) throws InterruptedException {
+                  final Service service = new Service(true);//true为公平锁，false为非公平锁
+                  Runnable runnable = new Runnable() {
+                      @Override
+                      public void run() {
+                          System.out.println("★线程" + Thread.currentThread().getName()
+                              + "运行了");
+                          service.serviceMethod();
+                      }
+                  };
+                  Thread[] threadArray = new Thread[10];
+                  for (int i = 0; i < 10; i++) {
+                      threadArray[i] = new Thread(runnable);
+                  }
+                  for (int i = 0; i < 10; i++) {
+                     threadArray[i].start();
+                  }
+
+            }
+            static public class Service {
+                private ReentrantLock lock;
+                public Service(boolean isFair) {
+                    super();
+                    lock = new ReentrantLock(isFair);
+                }
+
+                public void serviceMethod() {
+                    lock.lock();
+                    try {
+                          System.out.println("ThreadName=" + Thread.currentThread().getName()
+                             + "获得锁定");
+                        } finally {
+                          lock.unlock();
+                        }
+                }
+
+            }
+       }
+    </pre>
+     <img alt="公平锁结果" src="${ctxStatic}/images/resultImage/fairLockResult.png"><br> 
+               公平锁的运行结果是有序的。<br>
+               把Service的参数修改为false则为非公平锁 <br> 
+     inal Service service = new Service(false);//true为公平锁，false为非公平锁<br>
+     <img alt="非公平锁结果" src="${ctxStatic}/images/resultImage/noFairLock.png"><br> 
+              非公平锁的运行结果是无序的.<br>
+    </p>
+
+</div>
+<div>
+     <h3>三ReadWriteLock接口的实现类:ReentrantReadWriteLock</h3>
+     <h2>3.1简介</h2>
+     <p>
+        我们刚刚接触到的ReentrantLook(排他锁)具有完全互斥排他的效果,即同一时刻只允许一个线程<br>
+        访问,这样做虽然保证了实例变量的线程安全性,但效率非常低下.ReadWriteLock接口的实现类<br>
+   ReentrantReadWriteLock读写锁就是为了解决这个问题. <br>
+        读写锁维护了两个锁,一个是读操作相关的锁也称为共享锁,一个是写操作相关的锁也称为排他锁.<br>
+        通过分离读锁和写锁,其并发性比一般排他锁有了很大的提升.<br>
+        多个读锁之间不互斥,读锁与写锁互斥,写锁与写锁互斥(只要出现写操作的过程就是互斥的)<br>
+        在没有线程Thread进行写入操作时,进入读取操作的多个Thread都可以获取读锁.而进行写入操作的<br>
+   Thread只有在获取写锁后才能进行写入操作.即多个Thread可以同时进行读取操作,但是同一时<br>
+        刻只允许一个Thread进入写入操作<br>
+    <h3>3.2ReentranReadWriteLock的特性与常见方法</h3>
+    <h2>ReentranReadWriteLock的特性:</h2>
+    <pre>
+            特性                                                      说明
+            公平选择                    支持非公平(默认)和公平的锁获取方式,吞吐量上来看还是非公平优于公平.                    
+            重进入                       该锁支持重进入,以读写线程为例:读线程在获取了读锁之后,能够再次获取读锁.而写线程在获取了写锁之后能够再次获取写锁也能够同时获取读锁
+            锁降级                       遵循获取写锁,获取读锁在释放写锁的次序,写锁能够降级称为读锁.
+    </pre>
+    ReentrantReadWriteLock常见方法<br>
+    <pre>
+         方法名称                                                                                      描述
+   ReentrantReadWriteLock()             创建一个ReentrantReadWriteLock()的实例  
+   ReentrantReadWriteLock(Boolean fair) 创建一个特定锁类型(公平锁/非公平锁)的ReentrantReadWriteLock的实例
+    </pre>             
+     </p>
+</div>
+
+<div>
+    <h3>3.3ReentrantReadWriteLock的使用</h3>
+     <h2>1.读读共享</h2>
+     <p>
+                    两个线程同时运行read方法,你会发现两个线程可以同时或者说是几乎是同时运行lock()后面的的代<br>
+                    码,输出的两句话显示的时间一样.这样提高了程序的运行效率.<br>
+       <pre>
+          private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+          public void read() {
+               try {
+                  try {
+                        lock.readLock().lock();
+                        System.out.println("获得读锁" + Thread.currentThread().getName()
+                            + " " + System.currentTimeMillis());
+                        Thread.sleep(10000);
+                      } finally {
+                        lock.readLock().unlock();
+                      }
+                   } catch (InterruptedException e) {
+                      // TODO Auto-generated catch block
+                      e.printStackTrace();
+                   }
+          }
+
+       </pre>             
+     <h2>2.写写互斥</h2>
+     把上面代码的<br>
+     lock.readLock().lock();<br>
+     改为:<br>
+     lock.writeLock().lock();<br>
+     两个线程同时运行read方法，你会发现同一时间只允许一个线程执行lock()方法后面的代码<br>
+     3.读写互斥<br>
+    <pre>
+     private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+
+    public void read() {
+        try {
+            try {
+                lock.readLock().lock();
+                System.out.println("获得读锁" + Thread.currentThread().getName()
+                        + " " + System.currentTimeMillis());
+                Thread.sleep(10000);
+            } finally {
+                lock.readLock().unlock();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void write() {
+        try {
+            try {
+                lock.writeLock().lock();
+                System.out.println("获得写锁" + Thread.currentThread().getName()
+                        + " " + System.currentTimeMillis());
+                Thread.sleep(10000);
+            } finally {
+                lock.writeLock().unlock();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    </pre>     
+     
+     测试代码:<br>
+     <pre>
+     
+         Service service = new Service();
+
+        ThreadA a = new ThreadA(service);
+        a.setName("A");
+        a.start();
+
+        Thread.sleep(1000);
+
+        ThreadB b = new ThreadB(service);
+        b.setName("B");
+        b.start();
+     </pre>
+     运行两个使用同一个Service对象实例的线程a,b,线程a执行上面的read方法,线程b执行上面的<br>
+  write方法.你会发现同一时间只允许一个线程执行lock()方法后面的代码.记住:只要出现写的操作的<br>
+  过程就是互斥的.
+     </p>
+
+
+</div>
+
+
 
 </div>
 			

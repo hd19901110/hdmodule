@@ -179,7 +179,8 @@ desired effect
 			            <li><a href="#view/filemodule/wordExcelImgTxtToPdf.jsp"><i class="fa fa-circle-o"></i>office转pdf</a></li>
 			          </ul>
 			        </li>
-			            <li class="treeview">
+			        <!-- 线程模块 -->
+			        <li class="treeview">
 			          <a href="#base" class="menu1">
 			            <i class="fa fa-list"></i> <span>线程模块</span>
 			            <span class="pull-right-container">
@@ -194,9 +195,24 @@ desired effect
 			            <li><a href="#view/thread/javaThreadFive.jsp"><i class="fa fa-circle-o"></i>等待/通知(wait/notify)机制</a></li>
 			            <li><a href="#view/thread/javaThreadSix.jsp"><i class="fa fa-circle-o"></i>Thread之管道输入/输出流</a></li>
 			            <li><a href="#view/thread/javaThreadSeven.jsp"><i class="fa fa-circle-o"></i>Lock锁的使用</a></li>
+			            <li><a href="#view/thread/javaThreadEight.jsp"><i class="fa fa-circle-o"></i>并发编程中的一些问题</a></li>
 			          </ul>
 			        </li>
-			        
+			         <!-- java基础 -->
+			          <li class="treeview">
+			          <a href="#base" class="menu1">
+			            <i class="fa fa-list"></i> <span>java基础</span>
+			            <span class="pull-right-container">
+			              <i class="fa fa-angle-left pull-right"></i>
+			            </span>
+			          </a>
+			          <ul class="treeview-menu">
+			            <li><a href="#view/javaInterviewQuestion/java20200729start.jsp"><i class="fa fa-circle-o"></i>java的一些易混淆点</a></li>
+			            <li><a href="#view/thread/javaThreadTwo.jsp"><i class="fa fa-circle-o"></i>synchronized关键字(1)</a></li>
+			          </ul>
+			        </li>
+			         
+			         
 					
 					<li>
 						<a href="#view/index/todo.jsp"><i class="fa fa-hand-peace-o"></i><span>持续更新中</span></a>
