@@ -21,14 +21,16 @@ body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   overflow-x: hidden;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
+  overflow-y: hidden;
 }
 /* Layout */
 .wrapper {
   height: 100%;
   position: relative;
   overflow-x: hidden;
-  overflow-y: auto;
+  /* overflow-y: auto; */
+   overflow-y: hidden;
 }
 .wrapper:before,
 .wrapper:after {
@@ -718,7 +720,8 @@ a:focus {
 .fixed .control-sidebar {
   position: fixed;
   height: 100%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
+   overflow-y: hidden;
   padding-bottom: 50px;
 }
 .nav-tabs.control-sidebar-tabs > li:first-of-type > a,

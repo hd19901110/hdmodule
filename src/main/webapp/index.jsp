@@ -83,12 +83,13 @@ desired effect
   
   		<!-- Left side column. contains the logo and sidebar -->
   		<!-- 导航菜单 -->
+ <div style="overflow-y: auto">
 		<aside class="main-sidebar">
 
 			<!-- sidebar: style can be found in sidebar.less -->
 			<section class="sidebar">
 				<!-- Sidebar Menu -->
-				<ul class="sidebar-menu" data-widget="tree">
+				<ul class="sidebar-menu" data-widget="tree" >
 					<li class="header">导航菜单</li>
 					<!-- Optionally, you can add icons to the links -->
 					
@@ -224,6 +225,7 @@ desired effect
 			</section>
 			<!-- /.sidebar -->
 		</aside>
+</div>
 		<!-- 路径导航 -->
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
