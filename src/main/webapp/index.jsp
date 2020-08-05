@@ -208,8 +208,8 @@ desired effect
 			            </span>
 			          </a>
 			          <ul class="treeview-menu">
-			            <li><a href="#view/javaInterviewQuestion/java20200729start.jsp"><i class="fa fa-circle-o"></i>java的一些易混淆点</a></li>
-			            <li><a href="#view/thread/javaThreadTwo.jsp"><i class="fa fa-circle-o"></i>synchronized关键字(1)</a></li>
+			            <li><a href="#view/javaInterviewQuestion/java20200729start.jsp"><i class="fa fa-circle-o"></i>java的一些记录(二)</a></li>
+			            <li><a href="#view/javaInterviewQuestion/java20200805start.jsp"><i class="fa fa-circle-o"></i>java的一些记录(二)</a></li>
 			          </ul>
 			        </li>
 			         
