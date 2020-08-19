@@ -18,7 +18,10 @@
 	     font-size: 14px;
 	     font-family:Source Code Pro,DejaVu Sans Mono,Ubuntu Mono,Anonymous Pro,Droid Sans Mono,Menlo,Monaco,Consolas,Inconsolata,Courier,monospace,PingFang SC,Microsoft YaHei,sans-serif;  
 	}
+	div{ border-bottom: 1px solid black;
 	
+	
+	}
 	
 	</style>
 	
@@ -681,11 +684,430 @@ class Car implements Serializable {
    举个通俗的例子:<br>
     直接转发就相当于：“A找B借钱，B说没有，B去找C借，借到借不到都会把消息传递给A”；<br>
     间接转发就相当于："A找B借钱，B说没有，让A去找C借"。<br>
-   
-   
-   
    </div>
-   
+   <div>
+       <h3>81.简述tcp和udp的区别?</h3>
+        <ol>
+           <li>TCP面向连接(如打电话要先拨号建立连接):UDP是无连接的,即发送数据之前不需要建立连接.</li>
+           <li>TCP提供可靠的服务.也就是说,通过TCP连接传送的数据,无差错,不丢失,不重复,且按序到达;<br>
+               UDP尽最大努力交付,即不保证可靠交付.</li>
+           <li>TCP通过效验和,重传控制,序号标识,滑动窗口,确认应答实现可靠传输.如丢包时的重发控制<br>
+                                         还可以对次序错乱的分包进行顺序控制.</li>
+           <li>UDP具有较好的实时性,工作效率比TCP高,适用于对高速传输和实时性有较高的通信或广播通信.</li>
+           <li>每一条TCP链接只能是点到点的;UDP支持一对一,一对多,多对一和多对多的交互通信.</li>
+           <li>TCP对系统资源要求较多,UDP对系统资源要求较少.</li>
+        </ol>
+   </div>
+   <div>
+        <h3>82.tcp为什么要三次握手,两次不行吗?为什么?</h3>
+        <p>
+          为了实现可靠数据传输,TCP协议的通信双方,都必须维护一个序列号,以标识发送出去的数据包中,哪些是已经被对象收到的.<br>
+          三次握手的过程即是通信双方相互告知序列号起始值,并确认对象已经收到了序列号起始值的必经步骤.<br>
+           如果只是两次握手,至多只有链接发起方的起始序列号能被确认,另一方面选择的序列号则得不到确认.
+        </p>
+   </div>
+   <div>
+       <h3>83.说一下tcp粘包是怎么产生的?</h3>
+          1.发送方产生粘包<br>
+                              采用TCP协议传输数据的客户端与服务器经常是保持一个长链接的状态?(一次链接发送一次数据不存在粘包),<br>
+                              双方在链接不断开的情况下,可以一直传输数据;但当发送的数据包过于的小时,那么TCP协议默认的会启用<br>
+           Nagle算法,将这些较小的数据包进行合并发送(缓冲去数据发送是一个堆压的过程)这个合并过程就是在发送缓冲区中<br>
+                              进行的,也就是说数据发送出来它已经是粘包的状态了.
+          2接收方产生粘包<br>
+                              接收方采用TCP协议接收数据时的过程是这样的:数据到底接收方,从网络模型的下方传至传输层,传输层的TCP协议<br>
+                              处理时将其放置接收缓冲区,然后由应用层来主动获取(C语言用recv,read等函数);这时会出现一个问题,就是我<br>
+                              们在程序中调用的读取数据函数不能及时的把缓冲区中的数据拿出来,而下一个数据又到来并有一部分放入缓冲区的末尾,<br>
+                              等我们读取数据是就是一个粘包.(方数据的速度>应用层拿数据的速度.)
+   </div>
+   <div>
+        <h3>84.OSI的七层模型都有哪些?</h3>
+        <ol>
+           <li>应用层:网络服务与最终用户的一个接口.</li>
+           <li>表示层:数据的表示,安全,压缩.</li>
+           <li>会话层:建立,管理,终止会话.</li>
+           <li>传输层:定义传输数据的协议端口号,以及流控制和差错效验.</li>
+           <li>网络层:进行逻辑地址寻址,实现不同网络之间的路径选择.</li>
+           <li>数据链路层:建立逻辑连接,进行硬件地址寻址,差错效验等功能.</li>
+           <li>物理层:建立,维护,断开物理连接</li>
+        </ol>
+   </div>
+   <div>
+       <h3>85.get和post请求有哪些区别?</h3>
+       <ol>
+          <li>GET在浏览器回退时是无害的,而POST会再次提交请求.</li>
+          <li>GET产生的URL地址可以被Bookmark(书签收藏),而POST不可以</li>
+          <li>GET请求会被浏览器主动cache(缓存),而POST不会,除非手动设置.</li>
+          <li>GET请求只能进行url编码,而POST支持多种编码方式.</li>
+          <li>GET请求参数会被完整保留在浏览器历史记录里,而POST中的参数不会被保留.</li>
+          <li>GET请求在URL中传送的参数是有长度限制的,而POST么有.</li>
+          <li>对参数的数据类型,GET只接受ASCII字符,而POST没有限制.</li>
+          <li>GET比POST更不安全,因为参数直接暴露在URL上,所以不能用来传递敏感信息.</li>
+          <li>GET参数通过URL传递,POST放在Request body中.</li>
+          <li></li>
+       </ol>
+   </div>
+   <div>
+       <h3>86.如何实现跨域?</h3>
+       <h4>方式一:图片ping或script标签跨域</h4>
+       图片ping常用于跟踪用户点击页面或动态广告曝光次数.<br>
+  script标签可以得到从其他来源数据,这也是JSONP依赖的根据.<br>     
+       <h4>方式二: JSONP跨域</h4>
+       <p>JSONP(JSON with Padding)是数据格式JSON的一种"使用模式",可以让网页从别的网域要数据<br>
+                   根据XmlHttpRequest对象受到同源策略的影响,而利用&lt;script&gt;元素的这个开放策略,网页<br>
+                   可以得到从其他来源动态产生的JSON数据,而这种使用模式就是所谓的JSONP.用JSONP抓到的数据并不是<br>
+       JSON,而是任意的JavaScript,用JavaScript解释器运行而不是用JSON解释器解析.所有,通过<br>
+       Chrome查看的所有JSONP发送的Get请求都是js类型,而非XHR.
+       <p>           
+           缺点:<br> 
+       <ol>
+       <li>只能使用Get请求</li>
+       <li>不能注册success,error等事件监听函数,不能很容易的确定JSONP请求是否失败</li>
+       <li>JSONP 是从其他域中加载代码执行,容易受到跨站请求伪造的攻击,其安全性无法确保</li>
+       </ol>
+      <h4>方式三: CORS</h4>
+       <P>
+         Cross-Origin Resource Sharing(CORS)跨域资源共享是一份浏览器技术的规范,提供了Web服务<br>
+                       从不同域传来的沙盒脚本的方法,以避开浏览器的同源策略,确保安全的跨域数据传输.现代浏览器使用CORS在API容器<br>
+                       如XMLHttpRequest来减少HTTP请求的风险来源.与JSONP不同,COARS除了GET请求方法以外也支持其他的<br>
+         HTTP请求.服务器一般需要增加如下响应头的一种或几种:               
+        <pre>
+            Access-Control-Allow-Origin: *
+            Access-Control-Allow-Methods: POST, GET, OPTIONS
+            Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+            Access-Control-Max-Age: 86400
+        </pre>
+       </P>   
+                     跨域请求默认不会携带Cookie信息,如果需要携带,请配置下述参数:<br>
+       <pre>    
+         "Access-Control-Allow-Credentials": true
+         // Ajax设置
+         "withCredentials": true
+       </pre>              
+        <h4>方式四window.name+iframe</h4>
+        <p>
+        window.name通过在iframe（一般动态创建i）中加载跨域HTML文件来起作用。然后，HTML文件<br>
+                      将传递给请求者的字符串内容赋值给window.name。然后，请求者可以检索window.name值作为响应。
+        <ol>
+           <li>iframe 标签的跨域能力;</li>
+           <li>window.name属性值在文档刷新后依旧存在的能力(且最大允许2M左右)</li>
+        </ol>
+        </p> 
+       <p>
+                           每个iframe都有包裹它的window，而这个window是top window的子窗口。contentWindow属性<br>
+                          返回&lt;iframe&gt;元素的Window对象。你可以使用这个Window对象来访问iframe的文档及其内部DOM。      
+          <pre>
+          
+&lt;!-- 
+ 下述用端口 
+ 10000表示：domainA
+ 10001表示：domainB
+--&gt;
+ 
+&lt;!-- localhost:10000 --&gt;
+&lt;script>
+  var iframe = document.createElement('iframe');
+  iframe.style.display = 'none'; // 隐藏
+ 
+  var state = 0; // 防止页面无限刷新
+  iframe.onload = function() {
+      if(state === 1) {
+          console.log(JSON.parse(iframe.contentWindow.name));
+          // 清除创建的iframe
+          iframe.contentWindow.document.write('');
+          iframe.contentWindow.close();
+          document.body.removeChild(iframe);
+      } else if(state === 0) {
+          state = 1;
+          // 加载完成，指向当前域，防止错误(proxy.html为空白页面)
+          // Blocked a frame with origin "http://localhost:10000" from accessing a cross-origin frame.
+          iframe.contentWindow.location = 'http://localhost:10000/proxy.html';
+      }
+  };
+ 
+  iframe.src = 'http://localhost:10001';
+  document.body.appendChild(iframe);
+&lt;/script>
+ 
+&lt;!-- localhost:10001 --&gt;
+&lt;!DOCTYPE html&gt;
+...
+&lt;script&gt;
+  window.name = JSON.stringify({a: 1, b: 2});
+&lt;/script&gt;
+&lt;/html&gt;
+          </pre>
+          没看懂!!!<br>                              
+       </p>
+       <h4>方式五：window.postMessage()</h4>
+       <h4>方式六：修改document.domain跨子域</h4>
+       <h4>方式七：WebSocket</h4>
+       <h4>方式八：代理</h4>
+   </div>
+  <div>
+      <h3>87.说一下 JSONP 实现原理？</h3>
+      <p>
+      jsonp即 json+padding，动态创建script标签，利用script标签的src属性可以获取任何域下的js脚<br>
+                 本，通过这个特性(也可以说漏洞)，服务器端不在返货json格式，而是返回一段调用某个函数的js代<br>
+                 码，在src中进行了调用，这样实现了跨域。           
+      </p>
+  </div> 
+  <div>
+      <h2>九.设计模式</h2>
+     <h3>88.说一下你熟悉的设计模式?</h3>
+     <p>
+               参考:
+     <a href="http://mp.weixin.qq.com/s?__biz=MzIwMTY0NDU3Nw==&amp;mid=2651938221&amp;idx=1&amp;sn=9cb29d1eb0fdbdb5f976306b08d5bdcc&amp;chksm=8d0f32e3ba78bbf547c6039038682706a2eaf83002158c58060d5eb57bdd83eb966a1e223ef6&amp;scene=21#wechat_redirect" rel="nofollow">常用的设计模式汇总，超详细！</a>
+     </p> 
+  </div> 
+  <div>
+      <h3>89.简单工厂和抽象工厂有什么区别?</h3>
+      <h4>简单工厂模式:</h4>
+  这个模式本身很简单而且使用在业务较简单的情况下.一般用于小项目或者具体产品很少扩展的情况(这样工厂类才不用经常更改).<br>
+  它由3种角色组成:<br>
+     <ol>
+     <li>工厂类角色:这是本模式的核心,含有一定的商业逻辑和判断逻辑,根基逻辑不同,产生具体的工厂产品,如例子中的Driver类.</li>
+     <li>抽象产品角色:它一般是具体产品继承的父类或者实现的接口.由接口或者抽象类拉实现.如例中的Car接口</li>
+     <li>具体产品角色:工厂类所创建的对象就是此角色的实例.在Java中由一个具体类实现,如例子中的Benz,Bmw类.</li>
+     
+     </ol>
+            抽象工厂模式:<br>
+      <p>
+         可以这么说,它和工厂方法模式的区别就在于需要常见对象的复杂程度上.而且抽象工厂模式是三个里面最为抽象的,最具一般性的.<br>
+         抽象工厂模式的用意为:给客户端提供一个接口,可以创建多个产品族中的产品对象.<br>
+         而且使用抽象工厂模式还要满足一下条件:
+   <ol>
+      <li>系统中有多个产品族,而系统一次只可能消费其中一族产品</li>
+      <li>同属于同一个产品族的产品以其使用.</li>
+   </ol>
+   来看看抽象工厂模式的各个角色(和工厂方法的如出一辙):
+   <ol>
+       <li>抽象工厂角色:这是工厂方法模式的核心,它与应用程序无关.是具体工厂角色必须实现的接口或者必须继承的父类.<br>
+                    在java中它由具体的类来实现.</li>
+       <li>具体工厂角色:它含有和具体业务逻辑有关的代码.由应用程序调用以创建对应的具体产品的对象.在java中它由具体的类来实现.</li>
+       <li>抽象产品角色:它是具体产品继承的父类或者是实现的接口.在java中一般由抽象类或者接口来实现.</li>
+       <li>具体产品角色:具体工厂角色锁创建的对象就是此角色的实例.在java中由具体的类来实现.</li>
+   </ol>
+      </p>        
+
+  </div>
+  
+  <div>
+      <h2>十.Spring/Spring MVC</h2>  
+      <h3>90.为什么要使用spring?</h3>
+      <h4>1简介</h4>
+      <ol>
+         <li>目的:解决企业应用开发的复杂性</li>
+         <li>功能:使用基本的JavaBean代替EJB,并提供了更多的企业应用功能</li>
+         <li>范围:任何java应用</li>
+      </ol>
+              简单来说,Spring是一个轻量级的控制反转(IOC)和面向切面的(AOP)的容器框架.
+     <h4>2.轻量</h4>
+      <p>从大小与开销两方面而言Spring都是轻量的.完整的Spring框架可以在一个大小只有1MB多的JAR文件里发布.<br>
+                         并且Spring所需的处理开销也是微不足道的.此外,Spring是非侵入式的:典型地,Spring应用中的对象不依赖<br>
+                         于SPring的特定类.</p>
+     <h4>3.控制反转</h4>
+     <p>
+       Spring通过一种称作控制反转(IOC)的技术促进了松耦合.当应用了IOC,一个对象依赖的其它对象<br>
+                   会通过被动的方式传递进来,而不是这个对象自己创建或者查找依赖对象.你可以认为IOC与JNDI相反--<br>
+                   不是对象从容器中查找依赖,而是容器在对象初始化时不等对象请求就主动将依赖传递给它.
+     </p>
+     <h4>4.面向切面</h4>
+     <p>
+       Spring提供了面向切面编程的丰富支持,允许通过分离应用的业务逻辑与系统服务(例如审计(auditing)和事务<br>
+       (transaction)管理)进行内聚性的开发.应用对象只实现它们应该做的--完成业务逻辑--仅此而已.它们并不<br>
+                   负责(甚至是意识)其它的系统级关注点,例如日志或事务支持.
+     </p>
+     <h4>5.容器</h4>
+       <p> Spring包含并管理应用对象的配置和生命周期,在这个意义上它是一种容器,你可以配置你的每个bean如何被创建--基于<br>
+                        一个可配置原型(prototype),你的bean可以创建一个单独的实例或者每次需要时都生成一个新的实例--以及它们是如<br>
+                      何相互关联的.然而,Spring不应该被混同于传统的重量级的EJB容器,它们经常是庞大与笨重的,难以使用.
+       </p>
+     <h4>6框架</h4>
+     <p>
+        Spring可见将简单的组件配置,组合成为复杂的应用.在Spring中,应用对象被声明式地组合,典型地是在一个XML文件里.<br>
+        Spring也提供了很多基础功能(事务管理,持久化框架集成等等),将应用逻辑的开发留给了你.<br>
+                     所有Spring的这些特征使你能够编写更干净,更可管理,并且更易于测试的代码.它们也为Spring中的各种模块提供了基础支持.
+     </p>  
+  </div>
+  <div>
+      <h4>91.解释一下什么是aop?</h4>
+      <p>
+         AOP(Aspect-Orienred Programming,面向方面编程),可以说是OOP(Object-Oriented Programing,<br>
+                        面向对象编程)的补充和完善.OOP引入封装,继承和多态性等概念来建立一种对象层次结构,用以模拟公共行为的一个集合.<br>
+                        当我们需要为分散的对象引入公共行为的时候,oop则显得无能为力.也就是说OOP允许你定义从上到下的关系,但并不适合定义<br>
+                        从左到右的关系.例如日志功能.日志代码往往水平地地散布在所有对象层次中,而与它所散步到的对象的核心功能毫无关系.<br>
+                        对于其他类型的代码,如安全性,异常处理和透明的持续性也是如此.这种散布在各处的无关的代码被称为横切(cross-cutting)代码,
+                        在OOP设计中,它导致了大量代码的重复,而不利于各个模块的重用.<br>
+      </p> 
+      <p>
+                       而AOP技术则恰恰相仿,它利用一种称为"横切"的技术,剖解开封装的对象内部,并将那些影响了多个类的公共行为封装到一个可重用<br>
+                      模块,并将其名为"Aspect",即方面.所谓"方面",简单地说,就是将那些与业务无关,却为业务模块所共同调用的逻辑或责任封装<br>
+                      起来,便于减少系统的重复代码.减低模块间的耦合度,并有利于未来的可操作性和可维护性.AOP代表的是一个横向的关系,如果说<br>
+        "对象"是一个空心的圆柱体,其中封装的是对象的属性和行为;那么面向方面变成编程的方法,就仿佛一把利刃,将这些空心的圆柱<br>
+                      体剖开,以获得其内部的消息.而剖开的切面,就是所谓的"方面了",然后它又以巧夺天功的妙手将这些剖开的切面复原,不留痕迹.<br>           
+      </p>
+      <p>
+                          使用"横切"技术,AOP把软件系统分为两个部分:核心关注点和横切关注点.业务处理的主要流程是核心关注点,与之关系不大的<br>
+                          部分是横切关注点.横切关注点的一个特点是,他们经常发生在核心关注点的多处,而各处都基本相似.比如权限认证,日志,事务处理.<br>
+         AOP的作用在于分离系统找那个的各种关注点,将核心关注点和横切关注点分离开来.正如Avanade公司的高级方案架构师AdamMagee<br>
+                        所说,AOP的核心思想就是"将应用程序中的商业逻辑同对其提供支持的通用服务进行分离."
+      </p>
+  </div>
+  <div>
+      <h3>9.2解释一下什么是ioc?</h3>
+     <p>
+        IOC是Inversion of Control的缩写,多数书籍翻译成"控制反转".<br>
+                      简单来说就是把复杂系统分解成相互合作的对象，这些对象类通过封装以后，内部实现对外部是透明的，从而降低了解决问题的复杂度，<br>
+                      而且可以灵活地被重用和扩展。<br>
+     </p>          
+  </div>
+  <div>
+      <h3>94.Spring常用的注入方式有哪些?</h3>
+      Spring通过DI(依赖注入)实现IOC(控制反转),常用的注入方式主要有三种:
+      <ol>
+         <li>构造方法注入</li>
+         <li>setter注入</li>
+         <li>基于注解的注入<li>
+      </ol>
+  </div>
+  <div>
+      <h3>95.Spring中的bean是线程安全的吗?</h3>
+      <p>
+         Spring容器中的Bean是否线程安全.容器本身没有提供Bean的线程安全策略.因此可以说spring<br>
+                        容器中的bean 本身不具备线程安全的特性,但是具体还是要结合具体的scope的bean去研究.
+      </p>
+  </div>
+  <div>
+      <h3>96.spring支持几种bean的作用域?</h3>
+      <p>
+                         当通过spring容器创建一个Bean实例时,不仅可以完成Bean实例的实例化,还可以为Bean指定特定的作用域.<br>
+         Spring支持如下5种作用域;
+         <ol>
+            <li>singleton:单例模式.在整个SpringIOC容器中,使用Singleton定义的Bean将只有一个实例 </li>
+            <li>prototype:原型模式,每次通过容器的getBean方法获取prototype定义的Bean时,都将产生一个新的Bean实例</li>
+            <li>request:对于每次HTTP请求,使用request定义的Bean都将产生一个新实例,即每次HTTP请求将会<br>
+                                            产生不同的Bean实例.只有在Web应用中使用Sping时,该作用域才有效.</li>
+            <li>session:对于每次HTTP Session,使用session定义的Bean都将产生一个新实例.同样只有在Web<br>
+                                            应用中使用Spring时,该作用域才有效</li>
+            <li>globalsession:每个全局的HTTP Session,使用Session定义的Bean将产生一个新实例.典型情况下,仅在<br>
+                                           使用portlet context的时候有效.同样只有在Web应用中使用Spring时,该作用域才有效.</li>
+         </ol>
+      </p>
+      <p>
+                       其中计较常用的是singleton和prototype两种作用域.对于singleton作用域的Bean,每次请求该Bean都将获得相同的实例.<br>
+                       容器负责跟踪Bean实例的状态,负责维护Bean实例的声命周期行为 ;如果一个Bean被设置成prototype作用域,程序每次请求该id的<br>
+        Bean,Spring都会新建一个Bean实例,然后返回给程序.这种情况下,Spring容器仅仅使用new关键字创建Bean实例,一旦创建成功,<br>
+                      容器不在跟踪实例,也不会维护Bean实例的状态.<br>
+                     如果不指定Bean的作用域,Spring默认使用singleton作用域.Java在创建Java实例时,需要进行内存申请;销毁实例时,需要完成垃圾回收,<br>
+                     这些工作都会导致系统开销增加.因此,prototype作用域Bean的创建,销毁代价比较大.而singleton作用域的Bean实例一旦创建成功,可以<br>
+                     重复使用.因此,除非必要,否则尽量避免将Bean被设置成prototype作用域.         
+      </p>
+  </div>
+  <div>
+     <h3>97.Spring 自动装配Bean有哪些方式?</h3>
+      <p> Spring容器负责创建应用程序中的Bean同时通过ID来协调这些对象之间的关系.作为开发人员,我们需要告诉<br>
+      Spring要创建哪些bean并且如何将其装配到一起.<br>
+      spring中bean装配有两种方式:<br>
+      <ol>
+          <li>隐式的bean发现机制和自动装配</li>
+          <li>在java代码或者XML中进行显示配置</li>
+      
+      </ol>
+      </p>
+  </div>
+    
+  <div>
+  <h3>98.事务实现方式有哪些?</h3>
+     <ol>
+        <li>编程式事务管理对于基于POJO的应用来说是唯一选择,我们需要在代码中调用beginTransaction(),commit(),<br>
+        rollback()等事务部管理相关的方法,这就是编程式事务管理</li>
+        <li>基于TransactionProxyFactoryBean的声明式事务管理</li>
+        <li>基于@Transactional的声明式事务管理</li>
+        <li>基于Aspectj AOP配置事务</li>
+  
+     </ol>
+  </div>  
+  <div>
+      <h3>99.说一下spring的事务隔离?</h3>
+      <p>事务隔离级别指的是一个事务对数据的修改与另一个并行的事务的隔离程度,当多个事务同时访问相同数据时,<br>
+      如果没有采取必要的隔离机制,就可能发生一下问题:</p>
+      <ol>
+         <li>脏读:一个事务读到另一个事务未提交的更新数据.</li>
+         <li>幻读:例如第一个事务对一个表中的数据进行了修改,比如这种修改涉及到表中的"全部数据行".<br>
+                         同时,第二个事务也修改这个表中的数据,这种修改是向表中插入"一行新数据".那么,以后就会发生操作<br>
+                         第一个事务的用户发现表中还存在没有修改的数据行,就好像发生了幻觉一样.</li>
+         <li>不可重复读:比方说在同一个事务中先后执行两条一模一样的select语句,期间在此次事务中没有执行<br>
+                          过任何DDL语句,但先后得到的结果不一致,这就是不可重复读.</li>               
+      </ol>
+  </div>
+  <div>
+      <h3>100.说一下Spring mvc 运行流程?</h3>
+      <ol>
+         <li>用户向服务器发送请求,请求被Spring前端控制Servelt Dispatchervlet 捕获;</li>
+         <li>DispatcherServlet对请求URL进行解析,得到请求资源标识符(URI).然后根据该URI,调用<br>
+         HandlerMapping获得该Handler配置的所有相关对象(包括Handler对象以及handler对象对应<br>
+                         的拦截器),最后以HandlerExecutionChain对象的形式返回;</li> 
+         <li> DispatcherServlet 根据获得的Handler，选择一个合适的HandlerAdapter；（附注：<br>
+                          果成功获得HandlerAdapter后，此时将开始执行拦截器的preHandler(...)方法） </li>
+         <li>提取Request中的模型数据，填充Handler入参，开始执行Handler（Controller)。 在填充Handler的入参过程中<br>
+                         根据你的配置，Spring将帮你做一些额外的工作：
+               <ol>
+                   <li>HttpMessageConveter:将请求信息(如Json,xml等数据)转换成一个对象,将对象转换为指定的响应信息</li>
+                   <li>数据转换:对请求消息进行数据转换.如String转换成Integer,Double等</li>
+                   <li>数据根式化:对请求消息进行数据格式化.如将字符串转换成格式化数字或格式化日期等</li>
+                   <li>数据验证:验证数据的有效性(长度,格式等),验证结果存储到BindingResult或Error中</li>
+               </ol>
+                         
+        </li>
+        <li>Handler执行完成后,向DisPatcherServlet返回一个ModelAndView对象;</li>
+        <li>根据返回的ModelAndView,选择一个合适的ViewResolver(必须是已经注册到Spring容器中的ViewResolver)返回给DispatcherServlet</li>
+        <li>ViewResolver结合Model和view,来渲染视图;</li>
+        <li>将渲染结果返回给客户端.</li>      
+      </ol>
+  </div>  
+  <div>
+      <h3>101.Spring mvc有哪些组件?</h3>
+      Spring MVC的核心组件:
+      <ol>
+          <li>DispatcherServlet:中央控制器,把请求给转发到具体的控制类</li>
+          <li>Controller:具体处理请求的控制器</li>
+          <li>HandlerMapping:映射处理器,负责映射中央处理器转发给controller时的映射策略</li>
+          <li>ModelAndView:服务层返回的数据和视图层的封装类</li>
+          <li>viewResolver:视图解析器,解析具体的视图</li>
+          <li>Interceptors:拦截器,负责拦截我们定义的请求然后做处理工作</li>
+      </ol>
+  </div>  
+  <div>
+       <h3>102.@RequestMapping的作用是什么?</h3>
+     <p>RequestMapping是一个用来处理请求地址映射的注解,可用于类或方法上.用于类上,表示类中的所有响应<br>
+     请求的方法都是以该地址作为父路径.<br>
+     RequestMapping注解有六个属性,小面我们把她分成三类进行说明.<br>
+     value,method:<br>
+     <ol>
+     <li>value:指定请求的实际地址,指定的地址可以是URI Template模式</li>
+     <li>method:指定请求的method类型,GET,POST,PUT,DELETE等</li>
+     </ol>
+     consumes,produces<br>
+     <ol>
+        <li>consumes:指定处理请求的提交内容类型(Content-Type),例如application/json,text/html</li>
+        <li>produces:指定返回的内容类型,仅当request请求头中的(Accept)类型中包含该指定类型才返回;</li>
+     </ol>  
+     params,herders<br>
+     <ol>
+        <li>params:指定request中必须包含某些参数值时,才让该方法处理.</li>
+        <li>headers:指定request中必须包含某些指定的header值,才能让该方法处理请求.</li>
+     </ol>
+     
+     
+     
+     
+     </p>
+     
+  
+  
+  
+  </div>  
+  
    
    
 </div>
